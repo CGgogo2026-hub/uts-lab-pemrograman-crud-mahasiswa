@@ -1,39 +1,77 @@
-# UTS Lab Pemrograman — Sistem Data Mahasiswa
+# Sistem Data Mahasiswa
 
-Aplikasi CRUD mahasiswa menggunakan Python, Flask, SQLite, dan HTML/CSS.
+Program ini dibuat untuk memenuhi tugas UTS Lab Pemrograman. Aplikasi digunakan untuk mengelola data mahasiswa melalui halaman web menggunakan Python, Flask, dan SQLite.
 
-## Fitur
-- Menambah, melihat daftar/detail, mengubah, dan menghapus data mahasiswa.
-- Validasi kolom wajib, IPK 0,00–4,00, dan NIM unik.
-- Lama studi dihitung otomatis: tahun sekarang dikurangi angkatan.
-- Database SQLite disimpan pada file `mahasiswa.db` di folder proyek.
+## Fitur Aplikasi
 
-## Cara menjalankan (Windows)
-1. Pastikan Python sudah terpasang. Saat instalasi Python, centang **Add Python to PATH**.
-2. Ekstrak folder proyek.
-3. Buka folder proyek di VS Code.
-4. Buka terminal di VS Code (`Terminal > New Terminal`).
-5. Jalankan:
+Beberapa fitur yang tersedia:
 
-   ```bash
-   py -m venv .venv
-   .venv\\Scripts\\activate
-   py -m pip install -r requirements.txt
-   py app.py
-   ```
+- Menambahkan data mahasiswa.
+- Melihat daftar dan detail mahasiswa.
+- Mengubah data mahasiswa yang sudah tersimpan.
+- Menghapus data mahasiswa.
+- Menghitung lama studi secara otomatis berdasarkan tahun angkatan.
+- Menyimpan data menggunakan database SQLite agar tetap tersedia setelah aplikasi dijalankan ulang.
 
-   Jika perintah `py` tidak tersedia, coba ganti `py` dengan `python`.
+## Data yang Dikelola
 
-6. Buka browser dan akses `http://127.0.0.1:5000`.
-7. Tambahkan data uji, lalu coba fitur detail, edit, hapus, validasi IPK, dan NIM duplikat.
+Setiap data mahasiswa terdiri dari:
 
-## Catatan database
-File `mahasiswa.db` dibuat otomatis saat aplikasi dijalankan. Jangan menghapus file tersebut jika ingin mempertahankan data yang sudah dimasukkan.
+| Kolom | Keterangan |
+|---|---|
+| NIM | Nomor induk mahasiswa dan harus unik |
+| Nama | Nama mahasiswa |
+| Program Studi | Program studi mahasiswa |
+| Angkatan | Tahun masuk mahasiswa |
+| IPK | Nilai IPK dari 0,00 sampai 4,00 |
+| Lama Studi | Dihitung dari tahun sekarang dikurangi tahun angkatan |
 
-## Saran minimal 4 commit Git
-1. `Initial project structure`
-2. `Add SQLite database and student model`
-3. `Implement CRUD routes and validation`
-4. `Add responsive interface and documentation`
+Kolom nama, program studi, angkatan, dan NIM harus diisi. NIM yang sama tidak dapat digunakan untuk dua data mahasiswa.
 
-Buat commit secara bertahap sesuai perubahan yang benar-benar kamu lakukan. Jangan membuat commit palsu atau mengunggah database berisi data pribadi.
+## Teknologi
+
+- Python
+- Flask
+- SQLite
+- HTML dan CSS
+
+## Cara Menjalankan Aplikasi
+
+Langkah berikut menggunakan Windows dan terminal Command Prompt di VS Code.
+
+1. Pastikan Python sudah terpasang.
+2. Buka folder proyek di VS Code.
+3. Buka terminal melalui menu **Terminal → New Terminal**.
+4. Jalankan perintah berikut secara berurutan:
+
+```cmd
+py -m venv .venv
+.venv\Scripts\activate.bat
+py -m pip install -r requirements.txt
+py app.py
+```
+
+5. Setelah server berjalan, buka browser dan akses:
+
+```text
+http://127.0.0.1:5000
+```
+
+Aplikasi dapat digunakan selama server Flask masih berjalan. Untuk menghentikannya, tekan `Ctrl + C` pada terminal.
+
+## Penyimpanan Data
+
+Data disimpan dalam file `mahasiswa.db` di folder proyek. File database dibuat otomatis ketika aplikasi dijalankan.
+
+Jika ingin mempertahankan data yang sudah dimasukkan, jangan menghapus file `mahasiswa.db`. File tersebut juga tidak disertakan dalam repository GitHub.
+
+## Pengujian
+
+Beberapa hal yang dapat diuji saat menggunakan aplikasi:
+
+- Menambahkan data mahasiswa baru.
+- Membuka detail dan mengubah data mahasiswa.
+- Menghapus data mahasiswa.
+- Memasukkan NIM yang sudah digunakan.
+- Mengosongkan kolom wajib atau memasukkan IPK di luar rentang yang diperbolehkan.
+- Mematikan dan menjalankan kembali server untuk memastikan data tetap tersimpan.
