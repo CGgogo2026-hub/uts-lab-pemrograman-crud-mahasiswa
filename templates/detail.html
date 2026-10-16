@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="page-heading">
+  <div>
+    <p class="eyebrow">DETAIL MAHASISWA</p>
+    <h1>{{ mahasiswa.nama }}</h1>
+    <p class="muted">Informasi lengkap mahasiswa.</p>
+  </div>
+  <div class="heading-actions">
+    <a class="button" href="{{ url_for('edit', nim=mahasiswa.nim) }}">Edit Data</a>
+    <a class="button" href="{{ url_for('index') }}">Kembali</a>
+  </div>
+</div>
+<section class="panel detail-panel">
+  <dl class="detail-list">
+    <div><dt>NIM</dt><dd>{{ mahasiswa.nim }}</dd></div>
+    <div><dt>Nama</dt><dd>{{ mahasiswa.nama }}</dd></div>
+    <div><dt>Program Studi</dt><dd>{{ mahasiswa.program_studi }}</dd></div>
+    <div><dt>Angkatan</dt><dd>{{ mahasiswa.angkatan }}</dd></div>
+    <div><dt>IPK</dt><dd>{{ "%.2f"|format(mahasiswa.ipk) }}</dd></div>
+    <div><dt>Lama Studi</dt><dd>{{ mahasiswa.lama_studi }} tahun</dd></div>
+  </dl>
+</section>
+{% endblock %}

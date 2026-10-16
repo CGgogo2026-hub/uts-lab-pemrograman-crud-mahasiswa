@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="page-heading">
+  <div>
+    <p class="eyebrow">FORMULIR</p>
+    <h1>{{ judul }}</h1>
+    <p class="muted">Kolom bertanda wajib harus diisi. IPK harus 0,00–4,00.</p>
+  </div>
+</div>
+<section class="panel form-panel">
+  <form method="post">
+    <div class="form-grid">
+      <label>NIM <span>*</span>
+        <input type="number" name="nim" min="1" required value="{{ mahasiswa.get('nim', '') }}" placeholder="Contoh: 123456">
+      </label>
+      <label>Nama lengkap <span>*</span>
+        <input type="text" name="nama" required value="{{ mahasiswa.get('nama', '') }}" placeholder="Masukkan nama mahasiswa">
+      </label>
+      <label>Program studi <span>*</span>
+        <input type="text" name="program_studi" required value="{{ mahasiswa.get('program_studi', '') }}" placeholder="Contoh: Bisnis Digital">
+      </label>
+      <label>Angkatan <span>*</span>
+        <input type="number" name="angkatan" min="1900" max="{{ tahun_sekarang if tahun_sekarang is defined else 2100 }}" required value="{{ mahasiswa.get('angkatan', '') }}" placeholder="Contoh: 2023">
+      </label>
+      <label>IPK <span>*</span>
+        <input type="number" name="ipk" min="0" max="4" step="0.01" required value="{{ mahasiswa.get('ipk', '') }}" placeholder="Contoh: 3.75">
+      </label>
+    </div>
+    <p class="hint">Lama studi dihitung otomatis dari tahun sekarang dikurangi angkatan.</p>
+    <div class="form-actions">
+      <button class="button primary" type="submit">Simpan Data</button>
+      <a class="button" href="{{ url_for('index') }}">Batal</a>
+    </div>
+  </form>
+</section>
+{% endblock %}
